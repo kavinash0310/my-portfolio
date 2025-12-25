@@ -9,6 +9,7 @@ interface ContactProps {
   formData: { name: string; email: string; message: string };
   onFormChange: (field: string, value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
+  isSubmitting?: boolean;
 }
 
 export default function Contact({
@@ -17,7 +18,8 @@ export default function Contact({
   borderClass,
   formData,
   onFormChange,
-  onSubmit
+  onSubmit,
+  isSubmitting = false
 }: ContactProps) {
   return (
     <section id="contact" className={`py-20 px-4 ${isDark ? 'bg-slate-900/50' : 'bg-gray-100'}`}>
@@ -109,9 +111,10 @@ export default function Contact({
               </div>
               <button
                 onClick={onSubmit}
-                className="w-full px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/50"
+                disabled={isSubmitting}
+                className={`w-full px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-blue-500/50 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </div>
           </div>
