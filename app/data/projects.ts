@@ -1,34 +1,38 @@
 export const projects = [
-  {
-    title: "AI Code Assistant",
-    description: "VS Code extension that uses GPT-4 to help debug code, suggest improvements, and generate documentation automatically.",
-    tech: ["TypeScript", "OpenAI API", "VS Code API", "Node.js"],
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
-    github: "#",
-    live: "#"
-  },
-  {
-    title: "Real-time Collaboration Tool",
-    description: "Whiteboard app with live cursor tracking, WebRTC video calls, and collaborative drawing features.",
-    tech: ["React", "WebSocket", "WebRTC", "Canvas API"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    github: "#",
-    live: "#"
-  },
-  {
-    title: "Blockchain Voting System",
-    description: "Decentralized voting platform ensuring transparency and security using smart contracts.",
-    tech: ["Solidity", "Web3.js", "React", "Ethereum"],
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
-    github: "#",
-    live: "#"
-  },
-  {
-    title: "ML Image Classifier",
-    description: "Mobile app that classifies images in real-time using custom-trained TensorFlow models.",
-    tech: ["Python", "TensorFlow", "React Native", "FastAPI"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    github: "#",
-    live: "#"
-  }
-];
+    {
+        title: "Smart Expense Tracker",
+        description:
+          "A full-stack personal finance and expense management platform with secure authentication, analytics dashboard, Kafka-based notification service, and mock bank integration. Built with Angular and Spring Boot, supporting category-wise expense tracking, reporting, waitlist-based event flows, and rule-driven booking logic.",
+        tech: ["Angular", "Spring Boot", "Kafka", "PostgreSQL", "Docker"],
+        image: "https://images.unsplash.com/photo-1580537659466-46b92b3b5b47?w=800&q=80",
+        github: "#",
+        live: "#"
+      },
+      {
+        title: "ChatMate – AI Chatbot Platform",
+        description:
+          "End-to-end chatbot platform that integrates OpenAI APIs to provide conversational assistance, context retention, and prompt-driven workflows. The frontend is built using Next.js, while the Spring Boot backend handles authentication, rate-limiting, session management, and secure API orchestration.",
+        tech: ["Next.js", "Spring Boot", "OpenAI API", "PostgreSQL"],
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+        github: "#",
+        live: "#"
+      },
+      {
+        title: "Shortly – URL Shortener Service",
+        description:
+          "A scalable URL shortening application developed using Angular and Spring Boot, featuring analytics tracking, unique hash generation, redirect handling, and prevention of duplicate mappings. Designed with REST-based microservice architecture and database indexing for high-performance lookups.",
+        tech: ["Angular", "Spring Boot", "REST API", "PostGresSQL"],
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
+        github: "#",
+        live: "#"
+      },
+      {
+        title: "Personal Portfolio Website",
+        description:
+          "A modern, responsive portfolio website built using Next.js and Tailwind CSS, focused on performance, accessibility, and SEO optimization. Deployed on Vercel with CI-based build automation and production-ready routing and layout architecture.",
+        tech: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
+        image: "portfolio.png",
+        github: "https://github.com/kavinash0310/my-portfolio",
+        live: "https://avinash-kumar-portfolio.vercel.app/"
+      }
+    ];
