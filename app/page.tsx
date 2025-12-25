@@ -17,6 +17,7 @@ export default function Portfolio() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [scrollY, setScrollY] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -43,10 +44,38 @@ export default function Portfolio() {
     setFormData({ ...formData, [field]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Message sent! (This is a demo)');
-    setFormData({ name: '', email: '', message: '' });
+    
+    if (!formData.name || !formData.email || !formData.message) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Message sent successfully! I will get back to you soon.');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        alert(`Error: ${data.error || 'Failed to send message'}`);
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const bgClass = isDark ? 'bg-slate-950' : 'bg-gray-50';
@@ -114,6 +143,7 @@ export default function Portfolio() {
         formData={formData}
         onFormChange={handleFormChange}
         onSubmit={handleSubmit}
+        isSubmitting={isSubmitting}
       />
 
       {/* Footer */}
