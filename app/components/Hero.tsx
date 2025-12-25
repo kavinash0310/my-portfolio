@@ -42,7 +42,7 @@ export default function Hero({ isDark, cardBg, borderClass, onSectionClick }: He
         
         <p className={`text-xl sm:text-2xl ${isDark ? 'text-gray-400' : 'text-gray-600'} mb-12 max-w-3xl mx-auto leading-relaxed`}>
           Full Stack Developer passionate about building scalable applications and solving complex algorithmic challenges.
-          <span className="block mt-2 text-lg">🚀 745+ Problems Solved | 🏆 Top 5% on LeetCode</span>
+          <span className="block mt-2 text-lg">🚀 750+ Problems Solved</span>
         </p>
         
         <div className="flex flex-wrap gap-4 justify-center">
@@ -66,19 +66,19 @@ export default function Hero({ isDark, cardBg, borderClass, onSectionClick }: He
         <div className="mt-16 flex flex-wrap justify-center gap-8">
           <div className="animate-float" style={{ animationDelay: '0s' }}>
             <div className={`${cardBg} p-4 rounded-2xl border ${borderClass} shadow-lg`}>
-              <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">847+</div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">750+</div>
               <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Problems Solved</div>
             </div>
           </div>
           <div className="animate-float" style={{ animationDelay: '0.5s' }}>
             <div className={`${cardBg} p-4 rounded-2xl border ${borderClass} shadow-lg`}>
-              <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">67+</div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">20+</div>
               <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Projects Built</div>
             </div>
           </div>
           <div className="animate-float" style={{ animationDelay: '1s' }}>
             <div className={`${cardBg} p-4 rounded-2xl border ${borderClass} shadow-lg`}>
-              <div className="text-3xl font-bold bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">4★</div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">3★</div>
               <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>CodeChef Rating</div>
             </div>
           </div>
