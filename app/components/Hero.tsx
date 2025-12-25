@@ -41,7 +41,7 @@ export default function Hero({ isDark, cardBg, borderClass, onSectionClick }: He
         </h1>
         
         <p className={`text-xl sm:text-2xl ${isDark ? 'text-gray-400' : 'text-gray-600'} mb-12 max-w-3xl mx-auto leading-relaxed`}>
-          Full Stack Developer passionate about building scalable applications and solving complex algorithmic challenges.
+          Full Stack Developer passionate about building scalable applications and solving complex engineering challenges.
           <span className="block mt-2 text-lg">🚀 750+ Problems Solved</span>
         </p>
         

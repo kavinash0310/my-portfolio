@@ -39,7 +39,7 @@ export default function Navigation({
 
   const [isOpen, setIsOpen] = useState(false);
 
-  // ✅ Lock scroll when modal is open
+  //Lock scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -71,7 +71,7 @@ export default function Navigation({
 
   return (
     <>
-      {/* ✅ Navigation bar */}
+      {/* Navigation bar */}
       <nav
         className={`fixed top-0 w-full ${bgClass} backdrop-blur-lg z-50 border-b ${borderClass} transition-all duration-300`}
         style={{ transform: `translateY(${scrollY > 100 ? '-5px' : '0px'})` }}
@@ -208,7 +208,7 @@ export default function Navigation({
         )}
       </nav>
 
-      {/* ✅ Full-screen modal OUTSIDE nav, centered from all sides */}
+      {/* Full-screen modal OUTSIDE nav, centered from all sides */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-[9999]"
