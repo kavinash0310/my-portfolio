@@ -1,65 +1,126 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState, useEffect } from 'react';
+import Navigation from '@/app/components/Navigation';
+import Hero from '@/app/components/Hero';
+import About from '@/app/components/About';
+import Skills from "@/app/components/skills/Skills";
+import Projects from '@/app/components/Projects';
+import Certificates from '@/app/components/Certificates';
+import CodingProfiles from '@/app/components/CodingProfiles';
+import Contact from '@/app/components/Contact';
+
+export default function Portfolio() {
+  const [activeSection, setActiveSection] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    const handleScroll = () => setScrollY(window.scrollY);
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const scrollToSection = (section: string) => {
+    setActiveSection(section);
+    setIsMenuOpen(false);
+    document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleFormChange = (field: string, value: string) => {
+    setFormData({ ...formData, [field]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert('Message sent! (This is a demo)');
+    setFormData({ name: '', email: '', message: '' });
+  };
+
+  const bgClass = isDark ? 'bg-slate-950' : 'bg-gray-50';
+  const textClass = isDark ? 'text-white' : 'text-gray-900';
+  const cardBg = isDark ? 'bg-slate-800/50' : 'bg-white';
+  const borderClass = isDark ? 'border-slate-700' : 'border-gray-200';
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            AKS
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className={`${bgClass} ${textClass} min-h-screen transition-colors duration-300`}>
+      {/* Animated background */}
+      {isDark && (
+        <>
+          <div 
+            className="fixed inset-0 opacity-30 pointer-events-none transition-opacity"
+            style={{
+              background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.15), transparent 80%)`
+            }}
+          />
+          <div className="fixed inset-0 opacity-20 pointer-events-none">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl animate-pulse" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          </div>
+        </>
+      )}
+
+      {/* Navigation */}
+      <Navigation
+        activeSection={activeSection}
+        isDark={isDark}
+        scrollY={scrollY}
+        isMenuOpen={isMenuOpen}
+        onSectionClick={scrollToSection}
+        onThemeToggle={() => setIsDark(!isDark)}
+        onMenuToggle={() => setIsMenuOpen(!isMenuOpen)}
+      />
+
+      {/* Hero Section */}
+      <Hero
+        isDark={isDark}
+        cardBg={cardBg}
+        borderClass={borderClass}
+        onSectionClick={scrollToSection}
+      />
+
+      {/* About Section */}
+      <About isDark={isDark} cardBg={cardBg} borderClass={borderClass} />
+
+      {/* Skills Section */}
+      <Skills isDark={isDark} cardBg={cardBg} borderClass={borderClass} />
+
+      {/* Projects Section */}
+      <Projects isDark={isDark} cardBg={cardBg} borderClass={borderClass} />
+
+      {/* Certificates Section */}
+      <Certificates isDark={isDark} cardBg={cardBg} borderClass={borderClass} />
+
+      {/* Coding Profiles Section */}
+      <CodingProfiles isDark={isDark} cardBg={cardBg} borderClass={borderClass} />
+
+      {/* Contact Section */}
+      <Contact
+        isDark={isDark}
+        cardBg={cardBg}
+        borderClass={borderClass}
+        formData={formData}
+        onFormChange={handleFormChange}
+        onSubmit={handleSubmit}
+      />
+
+      {/* Footer */}
+      <footer className={`py-8 border-t ${borderClass} text-center ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+        <p className="mb-2">© 2024 Avinash Kumar. Built with Next.js & Tailwind CSS</p>
+        <p className="text-sm">Crafted with 💙 and lots of ☕</p>
+      </footer>
     </div>
   );
 }
