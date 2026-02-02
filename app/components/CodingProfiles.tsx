@@ -213,7 +213,7 @@ export default function CodingProfiles({ isDark, cardBg, borderClass }: CodingPr
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
               <Trophy className="mx-auto mb-2 text-yellow-400" size={32} />
-              <div className="text-3xl font-bold text-yellow-400">750</div>
+              <div className="text-3xl font-bold text-yellow-400">800</div>
               <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Total Problems</div>
             </div>
             <div className="text-center">
@@ -223,12 +223,12 @@ export default function CodingProfiles({ isDark, cardBg, borderClass }: CodingPr
             </div>
             <div className="text-center">
               <Zap className="mx-auto mb-2 text-blue-400" size={32} />
-              <div className="text-3xl font-bold text-blue-400">297</div>
+              <div className="text-3xl font-bold text-blue-400">302</div>
               <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>LeetCode Solved</div>
             </div>
             <div className="text-center">
               <Code className="mx-auto mb-2 text-purple-400" size={32} />
-              <div className="text-3xl font-bold text-purple-400">83</div>
+              <div className="text-3xl font-bold text-purple-400">110</div>
               <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>GitHub Contributions</div>
             </div>
           </div>
